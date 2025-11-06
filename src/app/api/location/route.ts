@@ -1,9 +1,22 @@
-export async function GET() {
+// app/api/location/route.ts
+import { NextRequest } from 'next/server';
+
+export async function GET(request: NextRequest) {
+    
+    // fetching user ip from header
+    const userIp = request.headers.get('x-real-ip') || request.headers.get('x-forwarded-for')?.split(',')[0].trim();
+
+    // url from ip
+    let geoApiUrl = 'https://get.geojs.io/v1/ip/geo.json'; 
+
+    if (userIp) {
+        geoApiUrl = `https://get.geojs.io/v1/ip/geo/${userIp}.json`;
+    } 
 
     const response = await fetch(
-        'https://get.geojs.io/v1/ip/geo.json', 
+        geoApiUrl, 
         { 
-            next: { revalidate: 900 } // Next.js HTTP Caching and tag for latest data fetch
+            next: { revalidate: 900 } 
         }
     );
 
