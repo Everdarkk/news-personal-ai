@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { NewsArticle } from "@/lib/types";
 
-export default function ArticlePage({ params }: { params: Promise<{ id: string }> }) {
+export default function ArticlePage() {
     const { id } = useParams();
     const [article, setArticle] = useState<NewsArticle | null>(null);
     const [generatedContent, setGeneratedContent] = useState<string | null>(null);

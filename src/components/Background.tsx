@@ -9,15 +9,15 @@ export default function Background() {
     // storing timeout IDs to clear them on unmount
     const timeoutIdsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
-    // colors and pixel size
-    const colors = ['#222222', '#333333', '#444444'];
-    const pixelSize = 40;
-
+    
     // Main effect to create and manage the pixel grid
     useEffect(() => {
+        // colors and pixel size
+        const colors = ['#222222', '#333333', '#444444'];
+        const pixelSize = 40;
         
         // fetching the pixel grid element
-        const pixelGrid: any = pixelGridRef.current;
+        const pixelGrid = pixelGridRef.current;
         if (!pixelGrid) return; // safety check
 
         function schedulePixelChange(pixel: HTMLDivElement) {
@@ -40,7 +40,11 @@ export default function Background() {
         function createGrid() {
             // clear existing timeouts
             timeoutIdsRef.current.forEach(clearTimeout);
-            timeoutIdsRef.current = []; // Очищуємо масив ID
+            timeoutIdsRef.current = []; // clearing ids array
+
+            // reinitialize the pixel grid
+            const pixelGrid = pixelGridRef.current;
+            if (!pixelGrid) return; // safety check
 
             // clearing existing grid
             pixelGrid.innerHTML = '';
