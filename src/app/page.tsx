@@ -23,9 +23,9 @@ export default function Home() {
       <Header />
       <br />
 
-      <ul className="grid grid-cols-2 gap-10 m-3 justify-center mx-auto max-w-5xl">
+      <ul className="md:grid md:grid-cols-2 md:gap-10 md:justify-center md:mx-auto max-w-5xl grid grid-cols-1 gap-10 mx-auto">
         {articles.map((article: NewsArticle) => (
-          <li key={article.id} className="flex flex-col bg-neutral-900 justify-between items-center p-4 border-double gap-4 max-w-lg hover:scale-102  grayscale hover:grayscale-0 transition-transform shadow-[5px_5px_15px_rgba(20,20,20,0.5)]">
+          <li key={article.id} className="flex flex-col bg-neutral-900 justify-between items-center p-4 place-self-center border-double gap-4 max-w-lg hover:scale-102  grayscale hover:grayscale-0 transition-transform shadow-[5px_5px_15px_rgba(20,20,20,0.5)]">
             <Image
               src={article.image}
               alt={article.title}
