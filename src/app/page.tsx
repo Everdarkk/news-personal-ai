@@ -37,7 +37,7 @@ export default function Home() {
             <div className="flex flex-col gap-2">
               <h2 className="text-2xl text-center">{article.title}</h2>
 
-              <p className="p-4 bg-neutral-800">{article.content.split('...')[0] + '...'}</p>  
+              <p  className="p-4 bg-neutral-800">{article.content.split('...')[0] + '...'}</p>  
             </div>
 
             <div className="flex w-full justify-around">
